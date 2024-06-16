@@ -10,5 +10,6 @@ import java.util.UUID;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class OrderRequest {
     private UUID itemId;
+    private UUID userId;
     private Long quantity;
 }

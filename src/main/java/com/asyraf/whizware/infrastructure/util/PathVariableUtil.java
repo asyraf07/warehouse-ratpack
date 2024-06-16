@@ -1,4 +1,4 @@
-package com.asyraf.whizware.util;
+package com.asyraf.whizware.infrastructure.util;
 
 import com.asyraf.whizware.exception.BadRequestException;
 import ratpack.core.path.PathTokens;

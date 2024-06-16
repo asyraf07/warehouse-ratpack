@@ -1,4 +1,4 @@
-package com.asyraf.whizware.util;
+package com.asyraf.whizware.infrastructure.util;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;

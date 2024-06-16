@@ -5,8 +5,7 @@ import com.asyraf.whizware.application.dto.item.ItemRequest;
 import com.asyraf.whizware.application.dto.item.ItemDto;
 import com.asyraf.whizware.application.response.ListResponse;
 import com.asyraf.whizware.exception.BadRequestException;
-import com.asyraf.whizware.infrastructure.repository.ItemRepository;
-import com.asyraf.whizware.infrastructure.repository.OrderRepository;
+import com.asyraf.whizware.domain.order.OrderBaseRepository;
 import com.google.inject.Inject;
 
 import java.util.UUID;
@@ -15,10 +14,10 @@ import java.util.stream.Collectors;
 public class ItemService {
 
     @Inject
-    private ItemRepository itemRepository;
+    private ItemBaseRepository itemRepository;
 
     @Inject
-    private OrderRepository orderRepository;
+    private OrderBaseRepository orderRepository;
 
     public ListResponse<ItemDto> getAllItem() {
         return ListResponse.<ItemDto>builder()

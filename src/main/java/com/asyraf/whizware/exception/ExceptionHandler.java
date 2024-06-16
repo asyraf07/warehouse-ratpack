@@ -5,10 +5,13 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
+import io.jsonwebtoken.lang.Strings;
+import org.hibernate.exception.ConstraintViolationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ratpack.core.error.internal.ErrorHandler;
 import ratpack.core.handling.Context;
+import ratpack.core.parse.NoSuchParserException;
 
 public class ExceptionHandler implements ErrorHandler {
     private static final Logger log = LoggerFactory.getLogger(ExceptionHandler.class);
@@ -44,12 +47,19 @@ public class ExceptionHandler implements ErrorHandler {
             context.getResponse().status(err.getCode());
         } else if (throwable instanceof NotFoundException err) {
             context.getResponse().status(err.getCode());
-        } else if (throwable instanceof JsonParseException) {
+        } else if (throwable instanceof UnauthorizedException err) {
+            context.getResponse().status(err.getCode());
+        } else if (throwable instanceof ForbiddenException err) {
+            context.getResponse().status(err.getCode());
+        } else if (throwable instanceof JsonParseException || throwable instanceof NoSuchParserException) {
             context.getResponse().status(400);
             response.setMessage("Request body is not valid!");
         } else if (throwable instanceof InvalidFormatException err) {
             context.getResponse().status(400);
             response.setMessage(String.format("%s is not a valid %s", err.getValue().toString(), err.getTargetType().getSimpleName()));
+        } else if (throwable instanceof ConstraintViolationException err) {
+            context.getResponse().status(400);
+            response.setMessage(String.format("%s already exists", Strings.capitalize(err.getConstraintName())));
         } else {
             context.getResponse().status(500);
         }

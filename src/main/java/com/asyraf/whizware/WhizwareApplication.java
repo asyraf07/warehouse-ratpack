@@ -1,6 +1,7 @@
 package com.asyraf.whizware;
 
 import com.asyraf.whizware.application.ApiEndpoints;
+import com.asyraf.whizware.infrastructure.filter.JwtFilter;
 import com.asyraf.whizware.infrastructure.module.ApiModule;
 import com.asyraf.whizware.infrastructure.module.ErrorModule;
 import ratpack.core.server.RatpackServer;
@@ -15,7 +16,9 @@ public class WhizwareApplication {
                     .module(ErrorModule.class)
                     .module(ApiModule.class)
                 ))
-                .handlers(chain -> chain.insert(ApiEndpoints.class))
+                .handlers(chain -> chain
+                    .all(JwtFilter.class)
+                    .insert(ApiEndpoints.class))
         );
 
     }

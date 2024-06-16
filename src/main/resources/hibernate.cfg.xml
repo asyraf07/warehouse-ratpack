@@ -19,5 +19,6 @@
 
         <mapping class="com.asyraf.whizware.domain.item.Item"/>
         <mapping class="com.asyraf.whizware.domain.order.Order"/>
+        <mapping class="com.asyraf.whizware.domain.user.User"/>
     </session-factory>
 </hibernate-configuration>

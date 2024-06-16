@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group = 'org.example'
+group = 'com.asyraf.whizware'
 version = '1.0-SNAPSHOT'
 
 repositories {
@@ -10,26 +10,30 @@ repositories {
 }
 
 dependencies {
+    // Ratpack
     implementation 'io.ratpack:ratpack-core:2.0.0-rc-1'
     implementation 'io.ratpack:ratpack-guice:2.0.0-rc-1'
-//    implementation 'io.ratpack:ratpack-pac4j:1.10.0-milestone-31'
-    implementation 'org.pac4j:ratpack-pac4j:3.0.0'
-//    implementation 'org.pac4j:pac4j-core:6.0.3'
-    implementation 'org.pac4j:pac4j-http:3.0.0'
-//    implementation 'org.pac4j:pac4j-oauth:3.0.0'
 
+    // Authentication & Authorization
+    implementation 'io.jsonwebtoken:jjwt:0.12.5'
+    implementation 'io.jsonwebtoken:jjwt-impl:0.12.5'
+    implementation 'org.mindrot:jbcrypt:0.4'
 
+    // Persistence
     implementation 'org.hibernate:hibernate-core:6.5.2.Final'
     implementation 'org.postgresql:postgresql:42.7.3'
 
+    // Logger
     runtimeOnly "org.slf4j:slf4j-simple:1.7.36"
 
+    // Helper
     compileOnly 'org.projectlombok:lombok:1.18.32'
     annotationProcessor 'org.projectlombok:lombok:1.18.32'
 
     testCompileOnly 'org.projectlombok:lombok:1.18.32'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.32'
 
+    // Test
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }

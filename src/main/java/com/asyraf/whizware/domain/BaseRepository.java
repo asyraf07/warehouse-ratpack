@@ -1,23 +1,24 @@
-package com.asyraf.whizware.infrastructure.repository;
+package com.asyraf.whizware.domain;
 
-import com.asyraf.whizware.util.HibernateUtil;
+import com.asyraf.whizware.infrastructure.util.HibernateUtil;
 import com.google.inject.Inject;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.exception.ConstraintViolationException;
 import org.hibernate.query.Query;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public abstract class Repository<T, ID> {
+public abstract class BaseRepository<T, ID> {
 
     @Inject
     private HibernateUtil hibernateUtil;
 
     private final Class<T> classType;
 
-    public Repository(Class<T> classType) {
+    public BaseRepository(Class<T> classType) {
         this.classType = classType;
     }
 
@@ -37,32 +38,32 @@ public abstract class Repository<T, ID> {
         }
     }
 
-    public T save(T item) throws Exception {
+    public T save(T entity) {
         Transaction transaction = null;
         try (Session session = hibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            T savedT = session.merge(item);
+            T savedT = session.merge(entity);
             transaction.commit();
             return savedT;
-        } catch (Exception e) {
+        } catch (ConstraintViolationException e) {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new Exception(e.getMessage());
+            throw e;
         }
     }
 
-    public void delete(T item) throws Exception {
+    public void delete(T entity) {
         Transaction transaction = null;
         try (Session session = hibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.remove(item);
+            session.remove(entity);
             transaction.commit();
-        } catch (Exception e) {
+        } catch (ConstraintViolationException e) {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new Exception(e.getMessage());
+            throw e;
         }
     }
 

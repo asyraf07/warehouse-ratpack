@@ -2,6 +2,7 @@ package com.asyraf.whizware.domain.order;
 
 import com.asyraf.whizware.application.dto.order.OrderDto;
 import com.asyraf.whizware.domain.item.Item;
+import com.asyraf.whizware.domain.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,6 +25,8 @@ public class Order {
     private UUID id;
     @ManyToOne
     private Item item;
+    @ManyToOne
+    private User user;
     private Long quantity;
     private BigDecimal price;
     private BigDecimal totalPrice;
@@ -32,6 +35,7 @@ public class Order {
         return OrderDto.builder()
             .id(this.id)
             .itemId(this.item.getId())
+            .userId(this.user.getId())
             .quantity(this.quantity)
             .price(this.price)
             .totalPrice(this.totalPrice)
