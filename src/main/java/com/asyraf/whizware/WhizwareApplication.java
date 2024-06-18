@@ -1,9 +1,9 @@
 package com.asyraf.whizware;
 
 import com.asyraf.whizware.application.ApiEndpoints;
-import com.asyraf.whizware.infrastructure.filter.JwtFilter;
-import com.asyraf.whizware.infrastructure.module.ApiModule;
-import com.asyraf.whizware.infrastructure.module.ErrorModule;
+import com.asyraf.whizware.infrastructure.config.filter.JwtFilter;
+import com.asyraf.whizware.infrastructure.config.module.ApiModule;
+import com.asyraf.whizware.infrastructure.config.module.ErrorModule;
 import ratpack.core.server.RatpackServer;
 import ratpack.guice.Guice;
 

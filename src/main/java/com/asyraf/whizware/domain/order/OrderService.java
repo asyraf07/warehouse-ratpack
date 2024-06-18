@@ -1,9 +1,9 @@
 package com.asyraf.whizware.domain.order;
 
-import com.asyraf.whizware.application.response.ListResponse;
-import com.asyraf.whizware.application.response.Response;
-import com.asyraf.whizware.application.dto.order.OrderRequest;
-import com.asyraf.whizware.application.dto.order.OrderDto;
+import com.asyraf.whizware.infrastructure.response.ListResponse;
+import com.asyraf.whizware.infrastructure.response.Response;
+import com.asyraf.whizware.application.order.OrderRequest;
+import com.asyraf.whizware.application.order.OrderDto;
 import com.asyraf.whizware.domain.user.User;
 import com.asyraf.whizware.exception.BadRequestException;
 import com.asyraf.whizware.domain.item.Item;
@@ -29,7 +29,7 @@ public class OrderService {
     public ListResponse<OrderDto> getAllOrder() {
         return ListResponse.<OrderDto>builder()
             .success(true)
-            .message("Berhasil!")
+            .message("Successfully!")
             .data(orderRepository.getAll().stream().map(Order::toDto).collect(Collectors.toList()))
             .build();
     }
@@ -37,7 +37,7 @@ public class OrderService {
     public Response<OrderDto> getOrder(UUID id) throws BadRequestException {
         return Response.<OrderDto>builder()
             .success(true)
-            .message("Berhasil!")
+            .message("Successfully!")
             .data(orderRepository.get(id).orElseThrow(() -> new BadRequestException("Not found!")).toDto())
             .build();
     }
@@ -47,7 +47,7 @@ public class OrderService {
         User user = userRepository.get(request.getUserId()).orElseThrow(() -> new BadRequestException("User not found!"));
         return Response.<OrderDto>builder()
             .success(true)
-            .message("Berhasil!")
+            .message("Successfully!")
             .data(orderRepository.save(Order.builder()
                 .item(item)
                 .user(user)
@@ -69,7 +69,7 @@ public class OrderService {
         order.setTotalPrice(item.getPrice().multiply(BigDecimal.valueOf(request.getQuantity())));
         return Response.<OrderDto>builder()
             .success(true)
-            .message("Berhasil!")
+            .message("Successfully!")
             .data(orderRepository.save(order).toDto())
             .build();
     }

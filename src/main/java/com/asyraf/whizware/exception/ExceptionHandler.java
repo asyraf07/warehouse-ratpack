@@ -1,6 +1,6 @@
 package com.asyraf.whizware.exception;
 
-import com.asyraf.whizware.application.response.NoDataResponse;
+import com.asyraf.whizware.infrastructure.response.NoDataResponse;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.ObjectMapper;

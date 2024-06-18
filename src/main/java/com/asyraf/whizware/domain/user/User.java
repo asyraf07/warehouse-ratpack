@@ -1,6 +1,6 @@
 package com.asyraf.whizware.domain.user;
 
-import com.asyraf.whizware.application.dto.user.UserDto;
+import com.asyraf.whizware.application.user.UserDto;
 import com.asyraf.whizware.infrastructure.constant.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,7 +8,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Collection;
 import java.util.UUID;
 
 @Data

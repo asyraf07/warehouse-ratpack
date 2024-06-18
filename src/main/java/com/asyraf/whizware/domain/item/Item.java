@@ -1,6 +1,6 @@
 package com.asyraf.whizware.domain.item;
 
-import com.asyraf.whizware.application.dto.item.ItemDto;
+import com.asyraf.whizware.application.item.ItemDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

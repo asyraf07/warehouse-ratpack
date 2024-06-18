@@ -1,13 +1,13 @@
 package com.asyraf.whizware.application;
 
-import com.asyraf.whizware.application.dto.auth.LoginHandler;
-import com.asyraf.whizware.application.dto.auth.RegisterHandler;
-import com.asyraf.whizware.application.dto.item.ItemHandler;
-import com.asyraf.whizware.application.dto.item.ItemHandlerWithId;
-import com.asyraf.whizware.application.dto.order.OrderHandler;
-import com.asyraf.whizware.application.dto.order.OrderHandlerWithId;
-import com.asyraf.whizware.application.dto.user.UserHandler;
-import com.asyraf.whizware.application.dto.user.UserHandlerWithId;
+import com.asyraf.whizware.application.auth.LoginHandler;
+import com.asyraf.whizware.application.auth.RegisterHandler;
+import com.asyraf.whizware.application.item.ItemHandler;
+import com.asyraf.whizware.application.item.ItemHandlerWithId;
+import com.asyraf.whizware.application.order.OrderHandler;
+import com.asyraf.whizware.application.order.OrderHandlerWithId;
+import com.asyraf.whizware.application.user.UserHandler;
+import com.asyraf.whizware.application.user.UserHandlerWithId;
 import ratpack.core.handling.Chain;
 import ratpack.func.Action;
 

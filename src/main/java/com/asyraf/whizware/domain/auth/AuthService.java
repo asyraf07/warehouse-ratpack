@@ -1,8 +1,8 @@
 package com.asyraf.whizware.domain.auth;
 
-import com.asyraf.whizware.application.dto.auth.LoginRequest;
-import com.asyraf.whizware.application.dto.auth.RegisterRequest;
-import com.asyraf.whizware.application.response.NoDataResponse;
+import com.asyraf.whizware.application.auth.LoginRequest;
+import com.asyraf.whizware.application.auth.RegisterRequest;
+import com.asyraf.whizware.infrastructure.response.NoDataResponse;
 import com.asyraf.whizware.domain.user.User;
 import com.asyraf.whizware.exception.BadRequestException;
 import com.asyraf.whizware.infrastructure.constant.Role;
@@ -41,41 +41,4 @@ public class AuthService {
             .build();
     }
 
-//
-//    public NoDataResponse registerUser(RegisterRequest request) {
-//        userRepository.save(User.builder()
-//            .username(request.getUsername())
-//            .password(BCrypt.hashpw(request.getPassword(), BCrypt.gensalt()))
-//            .role(Role.USER)
-//            .build());
-//        return NoDataResponse.builder()
-//            .success(true)
-//            .message("User successfully registered!")
-//            .build();
-//    }
-//
-//    public NoDataResponse registerAdmin(RegisterRequest request) {
-//        userRepository.save(User.builder()
-//            .username(request.getUsername())
-//            .password(BCrypt.hashpw(request.getPassword(), BCrypt.gensalt()))
-//            .role(Role.ADMIN)
-//            .build());
-//        return NoDataResponse.builder()
-//            .success(true)
-//            .message("Admin successfully registered!")
-//            .build();
-//    }
-//
-//    public NoDataResponse registerSystemAdmin(RegisterRequest request) {
-//        userRepository.save(User.builder()
-//            .username(request.getUsername())
-//            .password(BCrypt.hashpw(request.getPassword(), BCrypt.gensalt()))
-//            .role(Role.SYSTEM)
-//            .build());
-//        return NoDataResponse.builder()
-//            .success(true)
-//            .message("System Admin successfully registered!")
-//            .build();
-//    }
-//
 }

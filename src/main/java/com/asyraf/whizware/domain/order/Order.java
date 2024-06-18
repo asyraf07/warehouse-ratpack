@@ -1,6 +1,6 @@
 package com.asyraf.whizware.domain.order;
 
-import com.asyraf.whizware.application.dto.order.OrderDto;
+import com.asyraf.whizware.application.order.OrderDto;
 import com.asyraf.whizware.domain.item.Item;
 import com.asyraf.whizware.domain.user.User;
 import jakarta.persistence.*;

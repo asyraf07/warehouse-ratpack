@@ -1,12 +1,13 @@
 package com.asyraf.whizware.domain.user;
 
-import com.asyraf.whizware.application.dto.user.UserDto;
-import com.asyraf.whizware.application.dto.user.UserRequest;
-import com.asyraf.whizware.application.response.ListResponse;
-import com.asyraf.whizware.application.response.Response;
+import com.asyraf.whizware.application.user.UserDto;
+import com.asyraf.whizware.application.user.UserRequest;
+import com.asyraf.whizware.infrastructure.response.ListResponse;
+import com.asyraf.whizware.infrastructure.response.Response;
 import com.asyraf.whizware.exception.BadRequestException;
 import com.asyraf.whizware.domain.order.OrderBaseRepository;
 import com.google.inject.Inject;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -22,7 +23,7 @@ public class UserService {
     public ListResponse<UserDto> getAllUser() {
         return ListResponse.<UserDto>builder()
             .success(true)
-            .message("Berhasil!")
+            .message("Successfully!")
             .data(userRepository.getAll().stream().map(User::toDto).collect(Collectors.toList()))
             .build();
     }
@@ -30,7 +31,7 @@ public class UserService {
     public Response<UserDto> getUser(UUID id) throws BadRequestException {
         return Response.<UserDto>builder()
             .success(true)
-            .message("Berhasil!")
+            .message("Successfully!")
             .data(userRepository.get(id).orElseThrow(() -> new BadRequestException("Not found!")).toDto())
             .build();
     }
@@ -38,10 +39,10 @@ public class UserService {
     public Response<UserDto> addUser(UserRequest request) throws Exception {
         return Response.<UserDto>builder()
             .success(true)
-            .message("Berhasil!")
+            .message("Successfully!")
             .data(userRepository.save(User.builder()
                 .username(request.getUsername())
-                .password(request.getPassword())
+                .password(BCrypt.hashpw(request.getPassword(), BCrypt.gensalt()))
                 .role(request.getRole())
                 .build()).toDto())
             .build();
@@ -54,7 +55,7 @@ public class UserService {
         user.setRole(request.getRole());
         return Response.<UserDto>builder()
             .success(true)
-            .message("Berhasil!")
+            .message("Successfully!")
             .data(userRepository.save(user).toDto())
             .build();
     }

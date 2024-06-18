@@ -1,0 +1,8 @@
+database:
+  url: jdbc:postgresql://localhost:5432/whizware
+  username: postgres
+  password: asdf
+hibernate:
+  showSql: true
+  formatSql: true
+  ddlAuto: update
