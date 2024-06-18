@@ -25,7 +25,7 @@ cd ratpack-app
 ### Run the Application
 You can run the program from Intellij IDEA, or using this command.
 ```bash
-java -jar target/ratpack-app.jar
+./gradlew run
 ```
 ## Configuration
 ### Application Properties
@@ -47,6 +47,13 @@ hibernate:
 ## Usage
 ### Authentication
 Use JWT tokens for authentication. Tokens must be included in the Authorization header as Bearer <token>.
+
+### API Endpoints
+- /login: Get JWT Token
+- /register: Create an account
+- /item: Manage items
+- /order: Manage orders
+- /user: Manage users
 
 ### Error Handling
 Custom exceptions are used to handle errors gracefully. Refer to the exception package for more details.

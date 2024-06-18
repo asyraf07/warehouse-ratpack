@@ -1,5 +1,10 @@
 plugins {
     id 'java'
+    id 'application'
+}
+
+application {
+    mainClass = 'com.asyraf.whizware.WhizwareApplication'
 }
 
 group = 'com.asyraf.whizware'
@@ -43,4 +48,10 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.asyraf.whizware.WhizwareApplication'
+    }
 }
